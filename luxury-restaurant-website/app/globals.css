@@ -1,0 +1,112 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Luxury Color Palette */
+  --charcoal: #1a1a1a;
+  --charcoal-light: #242424;
+  --charcoal-dark: #0f0f0f;
+  --gold: #c9a227;
+  --gold-light: #d4b342;
+  --gold-dark: #a88920;
+  --cream: #f5f0e6;
+
+  /* Design Tokens */
+  --background: var(--charcoal);
+  --foreground: var(--cream);
+  --card: var(--charcoal-light);
+  --card-foreground: var(--cream);
+  --popover: var(--charcoal-light);
+  --popover-foreground: var(--cream);
+  --primary: var(--gold);
+  --primary-foreground: var(--charcoal);
+  --secondary: var(--charcoal-light);
+  --secondary-foreground: var(--cream);
+  --muted: var(--charcoal-light);
+  --muted-foreground: rgba(245, 240, 230, 0.6);
+  --accent: var(--gold);
+  --accent-foreground: var(--charcoal);
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+  --ring: var(--gold);
+  --radius: 0.75rem;
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
+  --font-serif: 'Playfair Display', 'Times New Roman', serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  
+  /* Custom Colors */
+  --color-charcoal: var(--charcoal);
+  --color-charcoal-light: var(--charcoal-light);
+  --color-charcoal-dark: var(--charcoal-dark);
+  --color-gold: var(--gold);
+  --color-gold-light: var(--gold-light);
+  --color-gold-dark: var(--gold-dark);
+  --color-cream: var(--cream);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-charcoal text-foreground antialiased;
+  }
+
+  /* Scrollbar Styling */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--charcoal-dark);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--charcoal-light);
+    border-radius: 4px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--gold-dark);
+  }
+}
+
+/* Selection Color */
+::selection {
+  background: var(--gold);
+  color: var(--charcoal);
+}
