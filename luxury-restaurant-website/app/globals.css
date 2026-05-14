@@ -1,77 +1,198 @@
 @import 'tailwindcss';
 @import 'tw-animate-css';
 
+/* ============================================
+   DARK MODE VARIANT
+============================================ */
+
 @custom-variant dark (&:is(.dark *));
 
+/* ============================================
+   ROOT THEME VARIABLES
+============================================ */
+
 :root {
-  /* Luxury Color Palette */
+  /* ============================================
+     LUXURY BRAND COLORS
+  ============================================ */
+
   --charcoal: #1a1a1a;
   --charcoal-light: #242424;
   --charcoal-dark: #0f0f0f;
+
   --gold: #c9a227;
   --gold-light: #d4b342;
   --gold-dark: #a88920;
+
   --cream: #f5f0e6;
 
-  /* Design Tokens */
+  /* ============================================
+     DESIGN TOKENS
+  ============================================ */
+
   --background: var(--charcoal);
   --foreground: var(--cream);
+
   --card: var(--charcoal-light);
   --card-foreground: var(--cream);
+
   --popover: var(--charcoal-light);
   --popover-foreground: var(--cream);
+
   --primary: var(--gold);
   --primary-foreground: var(--charcoal);
+
   --secondary: var(--charcoal-light);
   --secondary-foreground: var(--cream);
+
   --muted: var(--charcoal-light);
   --muted-foreground: rgba(245, 240, 230, 0.6);
+
   --accent: var(--gold);
   --accent-foreground: var(--charcoal);
+
   --destructive: #dc2626;
   --destructive-foreground: #fef2f2;
+
   --border: rgba(255, 255, 255, 0.1);
   --input: rgba(255, 255, 255, 0.1);
+
   --ring: var(--gold);
+
   --radius: 0.75rem;
 }
 
+/* ============================================
+   DARK MODE
+============================================ */
+
+.dark {
+  --background: var(--charcoal);
+  --foreground: var(--cream);
+
+  --card: var(--charcoal-light);
+  --card-foreground: var(--cream);
+
+  --popover: var(--charcoal-light);
+  --popover-foreground: var(--cream);
+
+  --primary: var(--gold);
+  --primary-foreground: var(--charcoal);
+
+  --secondary: var(--charcoal-light);
+  --secondary-foreground: var(--cream);
+
+  --muted: var(--charcoal-light);
+  --muted-foreground: rgba(245, 240, 230, 0.6);
+
+  --accent: var(--gold);
+  --accent-foreground: var(--charcoal);
+
+  --destructive: #dc2626;
+  --destructive-foreground: #fef2f2;
+
+  --border: rgba(255, 255, 255, 0.1);
+  --input: rgba(255, 255, 255, 0.1);
+
+  --ring: var(--gold);
+}
+
+/* ============================================
+   THEME TOKENS
+============================================ */
+
 @theme inline {
-  --font-sans: 'Inter', 'Inter Fallback', system-ui, sans-serif;
-  --font-serif: 'Playfair Display', 'Times New Roman', serif;
+  /* Fonts */
+  --font-sans:
+    'Inter',
+    'Inter Fallback',
+    system-ui,
+    sans-serif;
+
+  --font-serif:
+    'Playfair Display',
+    'Times New Roman',
+    serif;
+
+  /* Base Colors */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* Surface */
   --color-card: var(--card);
-  --color-card-foreground: var(--card-foreground);
+  --color-card-foreground: var(
+    --card-foreground
+  );
+
   --color-popover: var(--popover);
-  --color-popover-foreground: var(--popover-foreground);
+  --color-popover-foreground: var(
+    --popover-foreground
+  );
+
+  /* Brand */
   --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-foreground: var(
+    --primary-foreground
+  );
+
   --color-secondary: var(--secondary);
-  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary-foreground: var(
+    --secondary-foreground
+  );
+
   --color-muted: var(--muted);
-  --color-muted-foreground: var(--muted-foreground);
+  --color-muted-foreground: var(
+    --muted-foreground
+  );
+
   --color-accent: var(--accent);
-  --color-accent-foreground: var(--accent-foreground);
+  --color-accent-foreground: var(
+    --accent-foreground
+  );
+
+  /* System */
   --color-destructive: var(--destructive);
-  --color-destructive-foreground: var(--destructive-foreground);
+
+  --color-destructive-foreground: var(
+    --destructive-foreground
+  );
+
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
+
+  /* Radius */
   --radius-sm: calc(var(--radius) - 4px);
+
   --radius-md: calc(var(--radius) - 2px);
+
   --radius-lg: var(--radius);
+
   --radius-xl: calc(var(--radius) + 4px);
-  
-  /* Custom Colors */
+
+  /* Custom Luxury Colors */
   --color-charcoal: var(--charcoal);
-  --color-charcoal-light: var(--charcoal-light);
-  --color-charcoal-dark: var(--charcoal-dark);
+
+  --color-charcoal-light: var(
+    --charcoal-light
+  );
+
+  --color-charcoal-dark: var(
+    --charcoal-dark
+  );
+
   --color-gold: var(--gold);
+
   --color-gold-light: var(--gold-light);
+
   --color-gold-dark: var(--gold-dark);
+
   --color-cream: var(--cream);
 }
+
+/* ============================================
+   BASE STYLES
+============================================ */
 
 @layer base {
   * {
@@ -83,10 +204,25 @@
   }
 
   body {
-    @apply bg-charcoal text-foreground antialiased;
+    @apply bg-background text-foreground font-sans antialiased;
   }
 
-  /* Scrollbar Styling */
+  img {
+    @apply select-none;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+
+  a {
+    @apply transition-colors duration-300;
+  }
+
+  /* ============================================
+     SCROLLBAR
+  ============================================ */
+
   ::-webkit-scrollbar {
     width: 8px;
   }
@@ -97,16 +233,68 @@
 
   ::-webkit-scrollbar-thumb {
     background: var(--charcoal-light);
-    border-radius: 4px;
+    border-radius: 9999px;
   }
 
   ::-webkit-scrollbar-thumb:hover {
     background: var(--gold-dark);
   }
+
+  /* ============================================
+     TEXT SELECTION
+  ============================================ */
+
+  ::selection {
+    background: var(--gold);
+    color: var(--charcoal);
+  }
 }
 
-/* Selection Color */
-::selection {
-  background: var(--gold);
-  color: var(--charcoal);
+/* ============================================
+   REUSABLE UTILITIES
+============================================ */
+
+@layer utilities {
+  .container-width {
+    @apply mx-auto w-full max-w-7xl px-6 md:px-8;
+  }
+
+  .section-padding {
+    @apply py-20 md:py-28;
+  }
+
+  .luxury-card {
+    @apply rounded-2xl border border-white/10 bg-white/5 backdrop-blur-md;
+  }
+
+  .gold-gradient-text {
+    background: linear-gradient(
+      135deg,
+      #c9a227 0%,
+      #f5d97b 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.55),
+      rgba(0, 0, 0, 0.85)
+    );
+  }
+
+  .glass-effect {
+    @apply border border-white/10 bg-white/5 backdrop-blur-lg;
+  }
+
+  .gold-border {
+    @apply border border-gold/20;
+  }
+
+  .gold-hover {
+    @apply transition-all duration-300 hover:border-gold/50 hover:bg-gold/10;
+  }
 }
