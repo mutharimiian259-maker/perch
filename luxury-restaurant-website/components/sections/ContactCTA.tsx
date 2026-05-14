@@ -1,13 +1,20 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BUSINESS_INFO, WHATSAPP_MESSAGES, getWhatsAppUrl } from '@/lib/constants';
+import {
+  BUSINESS_INFO,
+  WHATSAPP_MESSAGES,
+  getWhatsAppUrl,
+} from '@/lib/constants';
 
 export function ContactCTA() {
   return (
     <section className="relative overflow-hidden bg-charcoal-dark py-20 md:py-28">
       {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
+      <div
+        aria-hidden="true"
+        className="absolute inset-0 opacity-5"
+      >
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gold via-transparent to-transparent" />
       </div>
 
@@ -15,7 +22,7 @@ export function ContactCTA() {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
+          viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
         >
           {/* Decorative Line */}
@@ -25,7 +32,7 @@ export function ContactCTA() {
             Ready for an Unforgettable Experience?
           </h2>
 
-          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg text-white/70">
+          <p className="mx-auto mt-6 max-w-2xl text-pretty text-lg leading-relaxed text-white/70">
             Join us at {BUSINESS_INFO.name} for an evening of exceptional dining,
             captivating music, and memories that last a lifetime.
           </p>
@@ -36,16 +43,19 @@ export function ContactCTA() {
               href={getWhatsAppUrl(WHATSAPP_MESSAGES.reservation)}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 rounded-full bg-gold px-10 py-4 text-lg font-semibold text-charcoal transition-all hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20"
+              aria-label={`Reserve a table at ${BUSINESS_INFO.name} via WhatsApp`}
+              className="inline-flex items-center gap-2 rounded-full bg-gold px-10 py-4 text-lg font-semibold text-charcoal transition-all duration-300 hover:bg-gold-light hover:shadow-lg hover:shadow-gold/20"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Reserve Your Table
+              <span>Reserve Your Table</span>
+
               <svg
                 className="h-5 w-5"
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"
+                aria-hidden="true"
               >
                 <path
                   strokeLinecap="round"
@@ -58,16 +68,20 @@ export function ContactCTA() {
           </div>
 
           {/* Contact Info */}
-          <div className="mt-10 flex flex-wrap items-center justify-center gap-6 text-sm text-white/50">
+          <div className="mt-10 flex flex-wrap items-center justify-center gap-3 text-center text-sm text-white/50 md:gap-6">
             <a
               href={`tel:${BUSINESS_INFO.phone}`}
-              className="transition-colors hover:text-gold"
+              className="transition-colors duration-300 hover:text-gold"
             >
               {BUSINESS_INFO.phone}
             </a>
-            <span>•</span>
+
+            <span className="hidden md:inline">•</span>
+
             <span>{BUSINESS_INFO.address}</span>
-            <span>•</span>
+
+            <span className="hidden md:inline">•</span>
+
             <span>{BUSINESS_INFO.hours}</span>
           </div>
 
